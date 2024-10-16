@@ -100,19 +100,19 @@ namespace CapaPresentacionTienda.Controllers
 
             bool respuesta = false;
 
-            string mensaje = string.Empty;
+            string Mensaje = string.Empty;
 
             if (existe)
             {
-                mensaje = "El producto ya existe en el carrito";
+                Mensaje = "El producto ya existe en el carrito";
 
             }
             else
             {
-                respuesta = new CN_Carrito().OperacionCarrito(idcliente, idproducto, true, out mensaje);
+                respuesta = new CN_Carrito().OperacionCarrito(idcliente, idproducto, true, out Mensaje);
             }
 
-            return Json(new { respuesta = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+            return Json(new { respuesta = respuesta, mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
 
         }
 
@@ -160,12 +160,12 @@ namespace CapaPresentacionTienda.Controllers
 
             bool respuesta = false;
 
-            string mensaje = string.Empty;
+            string Mensaje = string.Empty;
 
-            respuesta = new CN_Carrito().OperacionCarrito(idcliente, idproducto, true, out mensaje);
+            respuesta = new CN_Carrito().OperacionCarrito(idcliente, idproducto, true, out Mensaje);
 
 
-            return Json(new { respuesta = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+            return Json(new { respuesta = respuesta, mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
 
         }
 

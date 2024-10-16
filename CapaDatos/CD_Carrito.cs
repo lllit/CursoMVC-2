@@ -44,10 +44,10 @@ namespace CapaDatos
 
         }
 
-        public bool OperacionCarrito(int idcliente, int idproducto, bool sumar, out string mensaje)
+        public bool OperacionCarrito(int idcliente, int idproducto, bool sumar, out string Mensaje)
         {
             bool resultado = true;
-            mensaje = string.Empty;
+            Mensaje = string.Empty;
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
@@ -66,12 +66,13 @@ namespace CapaDatos
                     cmd.ExecuteNonQuery();
 
                     resultado = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
+                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
                 }
             }
             catch (Exception ex)
             {
                 resultado = false;
-                mensaje = ex.Message;
+                Mensaje = ex.Message;
 
             }
             return resultado;
@@ -116,8 +117,10 @@ namespace CapaDatos
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
 
-                    cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@idcliente", idcliente);
+
+                    cmd.CommandType = CommandType.Text;
+
                     oconexion.Open();
 
                     using (SqlDataReader dr = cmd.ExecuteReader())
@@ -131,7 +134,7 @@ namespace CapaDatos
                                     {
                                         IdProducto = Convert.ToInt32(dr["IdProducto"]),
                                         Nombre = dr["Nombre"].ToString(),
-                                        Precio = Convert.ToDecimal(dr["Precio"], new CultureInfo("es-CL")),
+                                        Precio = Convert.ToDecimal(dr["Precio"], new CultureInfo("es-PE")),
                                         RutaImagen = dr["RutaImagen"].ToString(),
                                         NombreImagen = dr["NombreImagen"].ToString(),
                                         oMarca = new Marca() { Descripcion = dr["DesMarca"].ToString() }

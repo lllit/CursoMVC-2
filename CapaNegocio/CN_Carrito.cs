@@ -19,9 +19,9 @@ namespace CapaNegocio
             return objCapaDato.ExisteCarrito(idcliente, idproducto);
         }
 
-        public bool OperacionCarrito(int idcliente, int idproducto, bool sumar, out string mensaje)
+        public bool OperacionCarrito(int idcliente, int idproducto, bool sumar, out string Mensaje)
         {
-            return objCapaDato.OperacionCarrito(idcliente, idproducto, sumar, out mensaje);
+            return objCapaDato.OperacionCarrito(idcliente, idproducto, sumar, out Mensaje);
         }
 
         public int CantidadEnCarrito(int idcliente)
